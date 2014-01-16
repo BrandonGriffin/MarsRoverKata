@@ -17,22 +17,7 @@ namespace MarsRoverKata
             map = planet;
         }
 
-        public void Move(IEnumerable<Char> commands)
-        {
-            foreach (var command in commands)
-            {
-                if (CommandIsForward(command))
-                    MoveForward();
-                else if (CommandIsBackward(command))
-                    MoveBackward();
-                else if (CommandIsRight(command))
-                    TurnRight();
-                else if (CommandIsLeft(command))
-                    TurnLeft();
-            }
-        }
-
-        private void TurnLeft()
+        public void TurnLeft()
         {
             if (Direction == Direction.North)
                 Direction = Direction + 3;
@@ -40,12 +25,12 @@ namespace MarsRoverKata
                 Direction = Direction - 1;
         }
 
-        private void TurnRight()
+        public void TurnRight()
         {
             Direction = Direction + 1;
         }
 
-        private void MoveBackward()
+        public void MoveBackward()
         {
             if (Direction == Direction.North)
                 MoveSouth();
@@ -57,7 +42,7 @@ namespace MarsRoverKata
                 MoveEast();
         }
 
-        private void MoveForward()
+        public void MoveForward()
         {
             if (Direction == Direction.North)
                 MoveNorth();
@@ -159,25 +144,6 @@ namespace MarsRoverKata
         private Int32 MaxRow()
         {
             return map.NumberOfRows - 1;
-        }
-        private static Boolean CommandIsLeft(Char command)
-        {
-            return command == 'l';
-        }
-
-        private static Boolean CommandIsRight(Char command)
-        {
-            return command == 'r';
-        }
-
-        private static Boolean CommandIsBackward(Char command)
-        {
-            return command == 'b';
-        }
-
-        private static Boolean CommandIsForward(Char command)
-        {
-            return command == 'f';
         }
     }
 }
