@@ -17,19 +17,18 @@ namespace MarsRoverKata
             map = planet;
         }
 
-        public void TurnLeft()
+        public void MoveForward()
         {
             if (Direction == Direction.North)
-                Direction = Direction + 3;
+                MoveNorth();
+            else if (Direction == Direction.East)
+                MoveEast();
+            else if (Direction == Direction.South)
+                MoveSouth();
             else
-                Direction = Direction - 1;
+                MoveWest();
         }
-
-        public void TurnRight()
-        {
-            Direction = Direction + 1;
-        }
-
+        
         public void MoveBackward()
         {
             if (Direction == Direction.North)
@@ -42,16 +41,17 @@ namespace MarsRoverKata
                 MoveEast();
         }
 
-        public void MoveForward()
+        public void TurnLeft()
         {
             if (Direction == Direction.North)
-                MoveNorth();
-            else if (Direction == Direction.East)
-                MoveEast();
-            else if (Direction == Direction.South)
-                MoveSouth();
+                Direction = Direction + 3;
             else
-                MoveWest();
+                Direction = Direction - 1;
+        }
+
+        public void TurnRight()
+        {
+            Direction = Direction + 1;
         }
 
         private void MoveWest()
